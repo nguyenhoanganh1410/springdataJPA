@@ -14,7 +14,6 @@ import javax.persistence.Table;
 @Table(name = "chuyenbay")
 public class ChuyenBay {
 	@Id
-	
 	@Column(name = "MaCB")
 	private String maCB;
 	

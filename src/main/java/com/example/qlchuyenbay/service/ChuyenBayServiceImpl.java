@@ -11,6 +11,7 @@ import com.example.qlchuyenbay.model.ChuyenBay;
 
 
 
+
 @Service
 public class ChuyenBayServiceImpl implements ChuyenBayService {
 	private ChuyenBayRepository chuyenBayRepository;
@@ -24,9 +25,11 @@ public class ChuyenBayServiceImpl implements ChuyenBayService {
 
 
 	@Override
-	public List<ChuyenBay> getChuyenBayByDiemDen(String diemDen) {
-		// TODO Auto-generated method stub
-		return null;
+	public List<ChuyenBay> getChuyenBayByDiemDen(String gaDen) {
+		List<ChuyenBay> result = chuyenBayRepository.findByGaDen(gaDen);
+		System.out.println("result"  + result);
+		
+		return result;
 	}
 
 	

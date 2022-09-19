@@ -1,59 +1,27 @@
 package com.example.qlchuyenbay.model;
 
-import javax.persistence.Entity;
-import javax.persistence.GeneratedValue;
-import javax.persistence.GenerationType;
-import javax.persistence.Id;
-import javax.persistence.JoinColumn;
-import javax.persistence.ManyToOne;
-import javax.persistence.MapsId;
-import javax.persistence.Table;
+import javax.persistence.*;
+import java.io.Serializable;
 
 @Entity
+@IdClass(ChungNhanPK.class)
 @Table(name = "chungnhan")
-public class ChungNhan {
-	
-	@Id
-	    @GeneratedValue(strategy = GenerationType.IDENTITY)
-	    private int id;
+public class ChungNhan implements Serializable {
+    @Id
+    @JoinColumn(name = "MaNV")
+    @ManyToOne(fetch = FetchType.EAGER)
+    private NhanVien maNV;
 
-	    @ManyToOne
-	    @MapsId("maNV")
-	    @JoinColumn(name = "MaNV")
-	    NhanVien nhanVien;
+    @Id
+    @JoinColumn(name = "MaMB", columnDefinition = "int")
+    @ManyToOne(fetch = FetchType.LAZY)
+    private MayBay maMB;
 
-	    @ManyToOne
-	    @MapsId("maMB")
-	    @JoinColumn(name = "MaMB")
-	    MayBay mayBay;
+    public ChungNhan() {
+    }
 
-		public ChungNhan(NhanVien nhanVien, MayBay mayBay) {
-			super();
-			this.nhanVien = nhanVien;
-			this.mayBay = mayBay;
-		}
-
-		public ChungNhan() {
-			super();
-		}
-
-		public NhanVien getNhanVien() {
-			return nhanVien;
-		}
-
-		public void setNhanVien(NhanVien nhanVien) {
-			this.nhanVien = nhanVien;
-		}
-
-		public MayBay getMayBay() {
-			return mayBay;
-		}
-
-		public void setMayBay(MayBay mayBay) {
-			this.mayBay = mayBay;
-		}
-
-	  
-	    // standard constructors, getters, and setters
-	    
+    public ChungNhan(MayBay mayBay, NhanVien nhanVien) {
+        this.maMB = mayBay;
+        this.maNV = nhanVien;
+    }
 }

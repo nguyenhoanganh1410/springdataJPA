@@ -24,8 +24,6 @@ public class MayBay {
 	@Column(name = "TamBay")
 	private int tamBay;
 	
-	@OneToMany(mappedBy = "maybay")
-    Set<ChungNhan> chungnhan;
 	
 	
 	public MayBay(int maMB, String loai, int tamBay) {

@@ -17,6 +17,7 @@ import org.springframework.web.bind.annotation.PostMapping;
 import org.springframework.web.bind.annotation.PutMapping;
 import org.springframework.web.bind.annotation.RequestBody;
 import org.springframework.web.bind.annotation.RequestMapping;
+import org.springframework.web.bind.annotation.RequestMethod;
 import org.springframework.web.bind.annotation.RequestParam;
 import org.springframework.web.bind.annotation.RestController;
 
@@ -28,7 +29,7 @@ import com.example.qlchuyenbay.service.ChuyenBayService;
 
 
 @RestController
-
+@RequestMapping("/chuyenbay")
 public class ChuyenBayController {
 	private ChuyenBayService chuyenBayDao;
 
@@ -37,12 +38,14 @@ public class ChuyenBayController {
 		super();
 		this.chuyenBayDao = employeeDao;
 	}
+
 	
-	@GetMapping("/chuyenbay/diemden")
-	public List<ChuyenBay> getChuyenBayByDiemDen(@RequestParam String diemDen){
-		System.out.println(diemDen);
-		return chuyenBayDao.getChuyenBayByDiemDen(diemDen);
+	@RequestMapping(value = "/gaDen/{gaDen:.+}", method = RequestMethod.GET)
+	public List<ChuyenBay> findById(@PathVariable(name = "gaDen", value = "gaDen") String gaDen) {
+		System.out.println(gaDen);
+		return chuyenBayDao.getChuyenBayByDiemDen(gaDen);
+		
 	}
-	
+
 
 }

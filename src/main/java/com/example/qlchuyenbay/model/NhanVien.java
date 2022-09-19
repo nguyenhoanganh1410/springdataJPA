@@ -21,10 +21,7 @@ public class NhanVien {
 	private String ten;
 	@Column(name = "Luong")
 	private int luong;
-	
-	@OneToMany(mappedBy = "nhanvien")
-    Set<ChungNhan> chungnhan;
-	
+
 	
 	public NhanVien() {
 		super();
