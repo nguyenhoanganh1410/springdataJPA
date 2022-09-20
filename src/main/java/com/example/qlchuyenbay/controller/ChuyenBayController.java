@@ -46,6 +46,13 @@ public class ChuyenBayController {
 		return chuyenBayDao.getChuyenBayByDiemDen(gaDen);
 		
 	}
+	@GetMapping("/doDai")
+	public List<ChuyenBay> getChuyenBayByDoDai (@RequestParam int startDoDai,
+																@RequestParam int endDoDai) {
+		System.out.println(startDoDai);
+		System.out.println(endDoDai);
+		return chuyenBayDao.findByDoDaiBetween(startDoDai, endDoDai);
+	}
 
 
 }

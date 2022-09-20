@@ -9,8 +9,6 @@ import com.example.qlchuyenbay.model.ChuyenBay;
 
 public interface ChuyenBayRepository extends JpaRepository<ChuyenBay, Integer> {
 	List<ChuyenBay> findByGaDen(String gaDen);
-
-	
-	
+	List<ChuyenBay> findByDoDaiBetween(int startDoDai, int endDoDai);
 	
 }

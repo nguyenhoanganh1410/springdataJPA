@@ -9,9 +9,6 @@ import org.springframework.stereotype.Service;
 import com.example.qlchuyenbay.dao.ChuyenBayRepository;
 import com.example.qlchuyenbay.model.ChuyenBay;
 
-
-
-
 @Service
 public class ChuyenBayServiceImpl implements ChuyenBayService {
 	private ChuyenBayRepository chuyenBayRepository;
@@ -29,6 +26,14 @@ public class ChuyenBayServiceImpl implements ChuyenBayService {
 		List<ChuyenBay> result = chuyenBayRepository.findByGaDen(gaDen);
 		System.out.println("result"  + result);
 		
+		return result;
+	}
+
+
+	@Override
+	public List<ChuyenBay> findByDoDaiBetween(int startDoDai, int endDoDai) {
+		List<ChuyenBay> result = chuyenBayRepository.findByDoDaiBetween(startDoDai, endDoDai);
+		System.out.println("result"  + result);
 		return result;
 	}
 
