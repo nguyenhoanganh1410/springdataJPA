@@ -36,6 +36,14 @@ public class ChuyenBayServiceImpl implements ChuyenBayService {
 		System.out.println("result"  + result);
 		return result;
 	}
+	
+	@Override
+	public List<ChuyenBay> findByGaDiAndGaDen(String gaDi,  String gaDen){
+		List<ChuyenBay> result = chuyenBayRepository.findByGaDiAndGaDen(gaDi, gaDen);
+		System.out.println("result"  + result);
+		return result;
+	}
+
 
 	
 	
