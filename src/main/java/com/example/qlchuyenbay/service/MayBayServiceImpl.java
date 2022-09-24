@@ -33,6 +33,15 @@ public class MayBayServiceImpl implements MayBayService {
 	}
 
 
+	@Override
+	public List<MayBay> findByLoaiContaining(String loai) {
+		List<MayBay> result = mayBayRepository.findByLoaiContaining(loai);
+		System.out.println("result"  + result);
+		
+		return result;
+	}
+
+
 	
 
 	

@@ -45,7 +45,16 @@ public class MayBayController {
 		return mayBayDao.findByTamBayGreaterThan(tamBay);
 		
 	}
+	
+	@GetMapping("/maybay/loaicontains")
+	public List<MayBay> getMayBayByLoai (@RequestParam String loai) {
+		System.out.println(loai);
+		
+		return mayBayDao.findByLoaiContaining(loai);
+		
+	}
 
+	
 
 	
 }
