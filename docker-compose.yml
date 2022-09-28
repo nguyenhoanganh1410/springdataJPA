@@ -1,0 +1,27 @@
+version: "3"
+
+
+services:
+  mysql_db:
+    image: mysql
+    container_name: mysql-qlcb
+    restart: always
+    volumes:
+      - dbdata:/var/lib/mysql
+    ports: 
+     - 3307:3306  
+    environment:
+      MYSQL_DATABASE: QLCHUYENBAY #Create an initial empty database called webserver  
+      MYSQL_ROOT_PASSWORD: password #root password
+      MYSQL_ROOT_HOST: '%'
+  qlchuyenbay:
+    build: .
+    container_name: qlcb-server
+    restart: always
+    ports:
+      - "8081:8080"
+    depends_on:
+      - mysql_db
+volumes:
+  dbdata:
+  

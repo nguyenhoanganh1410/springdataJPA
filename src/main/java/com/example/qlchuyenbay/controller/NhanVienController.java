@@ -45,6 +45,12 @@ public class NhanVienController {
 		return "Total Salary: " + " " +  nhanVienDao.getTotalLuong() + "$";
 		
 	}
+	@GetMapping("/hello")
+	public String helloWorld () {
+		//System.out.println(nhanVienDao.getTotalLuong());
+		return "hello";
+		
+	}
 	
 	
 	

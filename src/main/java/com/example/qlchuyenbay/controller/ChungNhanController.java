@@ -1,4 +1,10 @@
+
 package com.example.qlchuyenbay.controller;
+
+
+
+
+
 
 import java.util.List;
 
@@ -18,8 +24,8 @@ import org.springframework.web.bind.annotation.RestController;
 
 import com.example.qlchuyenbay.model.ChuyenBay;
 import com.example.qlchuyenbay.model.MayBay;
+import com.example.qlchuyenbay.service.ChungNhanService;
 import com.example.qlchuyenbay.service.ChuyenBayService;
-import com.example.qlchuyenbay.service.MayBayService;
 
 
 
@@ -27,32 +33,22 @@ import com.example.qlchuyenbay.service.MayBayService;
 
 @RestController
 @RequestMapping("/api")
-public class MayBayController {
-	private MayBayService mayBayDao;
+public class ChungNhanController {
+	private ChungNhanService chungNhanDao;
 
 	@Autowired
-	public MayBayController( MayBayService mayBayDao) {
+	public ChungNhanController( ChungNhanService chungNhanDao) {
 		super();
-		this.mayBayDao = mayBayDao;
+		this.chungNhanDao = chungNhanDao;
 	}
 
-
-	@GetMapping("/maybay/greaterthan")
-	public List<MayBay> getMayBayByTamBay (@RequestParam int tamBay) {
-		System.out.println(tamBay);
-		return mayBayDao.findByTamBayGreaterThan(tamBay);
+	//Get: MaNV by LoaiMayBay
+	@GetMapping("/nhanvien")
+	public List<String> getMayBayByTamBay (@RequestParam String loaiMayBay) {
+		System.out.println(loaiMayBay);
+		return chungNhanDao.findMaNhanVienByMayBay(loaiMayBay);
 		
 	}
 	
-	@GetMapping("/maybay/loaicontains")
-	public List<MayBay> getMayBayByLoai (@RequestParam String loai) {
-		System.out.println(loai);
-		
-		return mayBayDao.findByLoaiContaining(loai);
-		
-	}
 
-	
-
-	
 }
